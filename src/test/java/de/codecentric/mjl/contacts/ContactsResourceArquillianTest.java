@@ -64,7 +64,7 @@ public class ContactsResourceArquillianTest {
     @Test
     public void testGetContactsAsClient(@ArquillianResource URL deploymentURL) throws Exception {
         WebTarget target = buildWebTarget(deploymentURL);
-        List<Contact> contacts = target.path("contacts/contacts")
+        List<Contact> contacts = target.path("rest/contacts")
                 .request(MediaType.APPLICATION_JSON)
                 .get(CONTACT_LIST_TYPE);
         assertContactList(contacts);

@@ -71,7 +71,7 @@ public class ContactsResourceWarpTest {
     @Test
     public void testGetContactsAsClient(@ArquillianResource URL deploymentURL) throws Exception {
         WebTarget target = buildWebTarget(deploymentURL);
-        List<Contact> contacts = target.path("contacts/contacts")
+        List<Contact> contacts = target.path("rest/contacts")
                 .request(MediaType.APPLICATION_JSON)
                 .get(CONTACT_LIST_TYPE);
         assertContactList(contacts);
@@ -84,7 +84,7 @@ public class ContactsResourceWarpTest {
         Warp.initiate(new Activity() {
             @Override
             public void perform() {
-                List<Contact> contacts = webTarget.path("contacts/contacts").request(MediaType.APPLICATION_JSON).get(CONTACT_LIST_TYPE);
+                List<Contact> contacts = webTarget.path("rest/contacts").request(MediaType.APPLICATION_JSON).get(CONTACT_LIST_TYPE);
                 assertContactList(contacts);
 
             }
@@ -116,7 +116,7 @@ public class ContactsResourceWarpTest {
         Warp.initiate(new Activity() {
             @Override
             public void perform() {
-                List<Contact> contacts = webTarget.path("contacts/contacts").request(MediaType.APPLICATION_JSON).get(CONTACT_LIST_TYPE);
+                List<Contact> contacts = webTarget.path("rest/contacts").request(MediaType.APPLICATION_JSON).get(CONTACT_LIST_TYPE);
                 assertThat(contacts, hasSize(2));
             }
         }).inspect(new Inspection() {

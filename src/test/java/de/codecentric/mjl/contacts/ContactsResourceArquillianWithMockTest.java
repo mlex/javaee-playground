@@ -70,7 +70,7 @@ public class ContactsResourceArquillianWithMockTest {
 
         // So we can't configure our Mocks!
         WebTarget target = buildWebTarget(deploymentURL);
-        List<Contact> contacts = target.path("contacts/contacts")
+        List<Contact> contacts = target.path("rest/contacts")
                 .request(MediaType.APPLICATION_JSON)
                 .get(CONTACT_LIST_TYPE);
         assertThat(contacts, hasSize(0));

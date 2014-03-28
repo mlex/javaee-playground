@@ -56,7 +56,7 @@ public class ContactsResourceWarpWithMockTest {
         Warp.initiate(new Activity() {
             @Override
             public void perform() {
-                List<Contact> contacts = webTarget.path("contacts/contacts").request(MediaType.APPLICATION_JSON).get(CONTACT_LIST_TYPE);
+                List<Contact> contacts = webTarget.path("rest/contacts").request(MediaType.APPLICATION_JSON).get(CONTACT_LIST_TYPE);
                 assertThat(contacts, hasSize(0));
 
             }
@@ -80,7 +80,7 @@ public class ContactsResourceWarpWithMockTest {
         Warp.initiate(new Activity() {
             @Override
             public void perform() {
-                List<Contact> contacts = webTarget.path("contacts/contacts").request(MediaType.APPLICATION_JSON).get(CONTACT_LIST_TYPE);
+                List<Contact> contacts = webTarget.path("rest/contacts").request(MediaType.APPLICATION_JSON).get(CONTACT_LIST_TYPE);
                 assertContactList(contacts);
             }
         }).inspect(new Inspection() {
